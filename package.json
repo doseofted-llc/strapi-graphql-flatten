@@ -1,6 +1,6 @@
 {
   "name": "@doseofted/strapi-graphql-flatten",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Take a Strapi V4 GraphQL response and transform it into one similar to Strapi V3",
   "type": "module",
   "scripts": {
@@ -13,6 +13,10 @@
     "name": "Ted Klingenberg",
     "email": "ted@doseofted.com",
     "url": "https://doseofted.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doseofted-llc/strapi-graphql-flatten"
   },
   "license": "MIT",
   "packageManager": "pnpm@8.3.1",
