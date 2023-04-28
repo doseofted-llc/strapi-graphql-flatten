@@ -13,16 +13,16 @@ import { get } from "lodash"
  * @param stripRootData If given GraphQL response directly, remove root `.data` field
  * @returns V3-like Strapi GraphQL response for Strapi V4 response
  */
-export function sanifyResponse (res: unknown, stripRootData = false): unknown {
+export function strapiGraphqlFlatten (res: unknown, stripRootData = false): unknown {
   if ((typeof res === "object" && res !== null) && "data" in res) {
     // remove Strapi GraphQL root .data property in response
-    if (stripRootData) { return sanifyResponse(res.data) }
+    if (stripRootData) { return strapiGraphqlFlatten(res.data) }
     // otherwise if data is present and null, response itself should be null
     if (res.data === null) { return res.data }
   }
   // iterate over list
   if (Array.isArray(res)) {
-    return res.map(r => sanifyResponse(r))
+    return res.map(r => strapiGraphqlFlatten(r))
   }
   // scalars can stay the same
   if (typeof res !== "object" || res === null) {
@@ -37,7 +37,7 @@ export function sanifyResponse (res: unknown, stripRootData = false): unknown {
       ? res.data.map((data: unknown, index) => (typeof data === "object" && data !== null)
         && "attributes" in data
         && typeof data.attributes === "object"
-        ? sanifyResponse({
+        ? strapiGraphqlFlatten({
           ...data.attributes,
           id: "id" in data ? data.id : undefined,
           // NOTE: `____meta` will (at later step) move up a level to become `__meta`
@@ -55,7 +55,7 @@ export function sanifyResponse (res: unknown, stripRootData = false): unknown {
         (typeof res.data === "object" && res.data !== null)
           && "attributes" in res.data
           && typeof res.data.attributes === "object"
-          ? sanifyResponse({
+          ? strapiGraphqlFlatten({
             ...res.data.attributes,
             id: "id" in res.data ? res.data.id : undefined,
           })
@@ -66,7 +66,7 @@ export function sanifyResponse (res: unknown, stripRootData = false): unknown {
   const newRes: Record<string, any> = {}
   for (const [key, val] of Object.entries(res)) {
     // Query type was likely given, check values of keys for Strapi result
-    const valResult = sanifyResponse(val)
+    const valResult = strapiGraphqlFlatten(val)
     // also check for `____meta` (from previous step) and assign to new key
     const listHasMeta = get(valResult, ["0", "____meta"])
     newRes[key] = valResult
