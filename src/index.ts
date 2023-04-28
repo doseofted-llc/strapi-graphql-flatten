@@ -7,11 +7,11 @@ import { get } from "lodash"
  * - The value of `{response}.data?.[*].attributes` becomes the entity itself.
  * - The `.meta` property moves from entity response to top-level key (ex: `collections.meta` -> `collectionsMeta`)
  *
- * This should make the transition to Strapi v4 less painful.
+ * This will make Strapi's responses easier to read, simpler to use, and smaller to send.
  * 
- * @param res Given Strapi GraphQL result as parsed JSON
- * @param stripRootData If given GraphQL response directly, remove root `.data` field
- * @returns V3-like Strapi GraphQL response for Strapi V4 response
+ * @param res Given Strapi V4 GraphQL result as parsed JSON
+ * @param stripRootData If given GraphQL response body directly, remove root `.data` field
+ * @returns V3-like Strapi GraphQL response for given Strapi V4 response
  */
 export function strapiGraphqlFlatten (res: unknown, stripRootData = false): unknown {
   if ((typeof res === "object" && res !== null) && "data" in res) {
@@ -79,3 +79,5 @@ export function strapiGraphqlFlatten (res: unknown, stripRootData = false): unkn
   }
   return newRes
 }
+
+export default strapiGraphqlFlatten

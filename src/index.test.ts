@@ -1,7 +1,6 @@
 import { strapiGraphqlFlatten } from "."
 import { test, expect } from "vitest"
 import v4StrapiResponse from "../assets/example-response.json"
-import { get } from "lodash"
 
 // NOTE: these are just simple sanity checks for expected results
 // until better tests are written, verify logged response itself
