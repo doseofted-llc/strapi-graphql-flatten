@@ -2,7 +2,6 @@
   "name": "@doseofted/strapi-graphql-flatten",
   "version": "0.0.1",
   "description": "Take a Strapi V4 GraphQL response and transform it into one similar to Strapi V3",
-  "main": "index.js",
   "type": "module",
   "scripts": {
     "build": "tsup src/index.ts",
@@ -26,5 +25,15 @@
   },
   "dependencies": {
     "lodash": "^4.17.21"
+  },
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
   }
 }
