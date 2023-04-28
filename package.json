@@ -1,0 +1,30 @@
+{
+  "name": "@doseofted/strapi-graphql-flatten",
+  "version": "0.0.1",
+  "description": "Take a Strapi V4 GraphQL response and transform it into one similar to Strapi V3",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsup src/index.ts",
+    "dev": "tsup --watch src/index.ts",
+    "test": "vitest run",
+    "testing": "vitest"
+  },
+  "author": {
+    "name": "Ted Klingenberg",
+    "email": "ted@doseofted.com",
+    "url": "https://doseofted.com"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@8.3.1",
+  "devDependencies": {
+    "@types/lodash": "^4.14.194",
+    "tsup": "^6.7.0",
+    "tsx": "^3.12.6",
+    "typescript": "^5.0.4",
+    "vitest": "^0.30.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}

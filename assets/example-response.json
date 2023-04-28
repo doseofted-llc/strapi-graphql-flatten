@@ -1,0 +1,122 @@
+{
+	"data": {
+		"toBeDeleted": {
+			"data": {
+				"id": "1",
+				"attributes": {
+					"tests": {
+						"data": [
+							{
+								"id": "2",
+								"attributes": {
+									"hello": "Yo",
+									"more_tests": {
+										"__typename": "TestOnlyRelationResponseCollection",
+										"data": [
+											{
+												"id": "1",
+												"attributes": {
+													"hello": "Hi there",
+													"more_tests": {
+														"__typename": "TestOnlyRelationResponseCollection",
+														"data": []
+													}
+												}
+											},
+											{
+												"id": "3",
+												"attributes": {
+													"hello": "Hia",
+													"more_tests": {
+														"__typename": "TestOnlyRelationResponseCollection",
+														"data": []
+													}
+												}
+											}
+										]
+									}
+								}
+							},
+							{
+								"id": "1",
+								"attributes": {
+									"hello": "Hi there",
+									"more_tests": {
+										"__typename": "TestOnlyRelationResponseCollection",
+										"data": []
+									}
+								}
+							}
+						]
+					},
+					"hello": [
+						{
+							"__typename": "ComponentDeleteLaterWhat",
+							"hi": "Delete what?",
+							"id": "1"
+						},
+						{
+							"__typename": "ComponentDeleteLaterWoah",
+							"id": "1",
+							"cool": 5
+						},
+						{
+							"__typename": "ComponentDeleteLaterCombo",
+							"id": "1",
+							"combo_1": [
+								{
+									"id": "2",
+									"hi": "what",
+									"__typename": "ComponentDeleteLaterWhat"
+								}
+							],
+							"combo_2": null
+						}
+					]
+				}
+			}
+		},
+		"question": {
+			"__typename": "QuestionEntityResponse",
+			"data": {
+				"id": "3",
+				"__typename": "QuestionEntity",
+				"attributes": {
+					"question": "Some question?",
+					"__typename": "Question"
+				}
+			}
+		},
+		"questions": {
+			"__typename": "QuestionEntityResponseCollection",
+			"meta": {
+				"__typename": "ResponseCollectionMeta",
+				"pagination": {
+					"__typename": "Pagination",
+					"total": 2,
+					"page": 1,
+					"pageSize": 10,
+					"pageCount": 1
+				}
+			},
+			"data": [
+				{
+					"id": "3",
+					"__typename": "QuestionEntity",
+					"attributes": {
+						"question": "Some question?",
+						"__typename": "Question"
+					}
+				},
+				{
+					"id": "2",
+					"__typename": "QuestionEntity",
+					"attributes": {
+						"question": "Lorem ipsum dolor sit amet?",
+						"__typename": "Question"
+					}
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,94 @@
+{
+	toBeDeleted {
+		data {
+			id
+			attributes {
+				tests {
+					 data {
+						id
+						attributes {
+							hello
+							more_tests {
+								__typename
+								data {
+									id
+									attributes {
+										hello
+										more_tests {
+											__typename
+											data {
+												id
+												attributes {
+													hello
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				hello {
+					__typename
+					... on ComponentDeleteLaterWhat {
+						hi
+						id
+						__typename
+					}
+					... on ComponentDeleteLaterWoah {
+						id
+						cool
+						__typename
+					}
+					... on ComponentDeleteLaterCombo {
+						id
+						combo_1 {
+							id
+							hi
+							__typename
+						}
+						combo_2 {
+							id
+							cool
+							__typename
+						}
+					}
+					
+				}
+			}
+		}
+	}
+	question(id: "3") {
+		__typename
+		data {
+			id
+			__typename
+			attributes {
+				question
+				__typename
+			}
+		}
+	}
+	 questions {
+		__typename
+		meta {
+			__typename
+			pagination {
+				__typename
+				total
+				page
+				pageSize
+				pageCount
+			}
+		}
+		data {
+			id
+			__typename
+			attributes {
+				question
+				__typename
+			}
+		}
+	}
+}
