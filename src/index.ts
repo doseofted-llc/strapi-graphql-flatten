@@ -20,6 +20,8 @@ export function strapiGraphqlFlatten (res: unknown, stripRootData = false): unkn
     if (stripRootData) { return strapiGraphqlFlatten(res.data) }
     // otherwise if data is present and null, response itself should be null
     if (res.data === null) { return res.data }
+    // if data is an empty array, there are no results (return the empty array back)
+    if (Array.isArray(res.data) && res.data.length === 0) { return res.data }
   }
   // iterate over list
   if (Array.isArray(res)) {
