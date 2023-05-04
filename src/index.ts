@@ -1,4 +1,4 @@
-import { get } from "lodash"
+import get from "just-safe-get"
 
 /**
  * Turn a Strapi V4 GraphQL response into a structure resembling Strapi V3. Specifically:
@@ -13,6 +13,7 @@ import { get } from "lodash"
  * @param stripRootData If given GraphQL response body directly, remove root `.data` field
  * @returns V3-like Strapi GraphQL response for given Strapi V4 response
  */
+export function strapiGraphqlFlatten <T>(res: unknown, stripRootData?: boolean): T
 export function strapiGraphqlFlatten (res: unknown, stripRootData = false): unknown {
   if ((typeof res === "object" && res !== null) && "data" in res) {
     // remove Strapi GraphQL root .data property in response
@@ -66,7 +67,7 @@ export function strapiGraphqlFlatten (res: unknown, stripRootData = false): unkn
   const newRes: Record<string, any> = {}
   for (const [key, val] of Object.entries(res)) {
     // Query type was likely given, check values of keys for Strapi result
-    const valResult = strapiGraphqlFlatten(val)
+    const valResult = strapiGraphqlFlatten<any>(val)
     // also check for `____meta` (from previous step) and assign to new key
     const listHasMeta = get(valResult, ["0", "____meta"])
     newRes[key] = valResult
