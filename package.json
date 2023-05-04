@@ -1,6 +1,6 @@
 {
   "name": "@doseofted/strapi-graphql-flatten",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Take a Strapi V4 GraphQL response and transform it into one similar to Strapi V3",
   "type": "module",
   "scripts": {

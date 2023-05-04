@@ -21,7 +21,11 @@ export function strapiGraphqlFlatten (res: unknown, stripRootData = false): unkn
     // otherwise if data is present and null, response itself should be null
     if (res.data === null) { return res.data }
     // if data is an empty array, there are no results (return the empty array back)
-    if (Array.isArray(res.data) && res.data.length === 0) { return res.data }
+    const emptyData = Array.isArray(res.data) && res.data.length === 0
+    const keyCount = Object.keys(res).length
+    // but first, make sure that empty data isn't just a property of an entity
+    const onlyEmptyData = emptyData && (keyCount === 1 || (keyCount <= 2 && "__typename" in res))
+    if (onlyEmptyData) { return res.data }
   }
   // iterate over list
   if (Array.isArray(res)) {
