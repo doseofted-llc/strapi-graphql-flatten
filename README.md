@@ -1,5 +1,8 @@
 # Strapi GraphQL Flatten
 
+[![npm](https://img.shields.io/npm/v/@doseofted/strapi-graphql-flatten)](https://www.npmjs.com/package/@doseofted/strapi-graphql-flatten)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@doseofted/strapi-graphql-flatten/latest)](https://bundlephobia.com/package/@doseofted/strapi-graphql-flatten@latest)
+
 Turn a Strapi V4 GraphQL response into a simpler structure resembling Strapi V3.
 
 [See discussion](https://forum.strapi.io/t/discussion-regarding-the-complex-response-structure-for-rest-graphql-developer-experience/13400)
